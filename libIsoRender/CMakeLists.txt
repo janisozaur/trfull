@@ -2,6 +2,7 @@ cmake_minimum_required (VERSION 3.1)
 project (IsoRender C)
 
 find_package(PNG REQUIRED)
+find_package(embree3)
 find_package(embree 3 REQUIRED)
 find_package(assimp CONFIG REQUIRED)
 add_subdirectory(libImage)
