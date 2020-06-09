@@ -6,6 +6,13 @@ add_subdirectory(libIsoRender)
 include_directories(libIsoRender/src libIsoRender/libImage/src /usr/local/Cellar/jansson/2.12/include)
 link_directories(/usr/local/Cellar/jansson/2.12/lib/)
 
+find_program(LSB_RELEASE_EXEC lsb_release)
+execute_process(COMMAND ${LSB_RELEASE_EXEC} -a
+    OUTPUT_VARIABLE LSB_RELEASE_ID_SHORT
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+message("Distro: ${LSB_RELEASE_ID_SHORT}")
+
 if(MSVC) # assumes vcpkg
       find_package(jansson CONFIG REQUIRED)
       find_package(PNG REQUIRED)
